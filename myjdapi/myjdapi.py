@@ -411,12 +411,6 @@ class Linkgrabber:
         resp = self.device.action("/linkgrabberv2/help",http_action="GET")
         return resp
 
-    def rename_link(self):
-        """
-        No idea what parameters i have to pass and/or i don't know what it does.
-        If i find out i will implement it :P
-        """
-        pass
 
     def move_links(self):
         """
@@ -439,16 +433,29 @@ class Linkgrabber:
         """
         pass
 
-    def rename_package(self,uuid, newName):
+    def rename_link(self, link_uuid, newName):
+        """
+        Give a link a new name
+        {
+            "link_uuid" : integer,    # UUID of the link to change. Obtained from query_links
+            "newName"   : string,     # New name of the link
+        }
+        """
+
+        params = [ int(link_uuid), str(newName) ]
+        resp = self.device.action(self.url+"/renameLink", params)
+        return resp
+
+    def rename_package(self, uuid, newName):
         """
         Rename a package
         {
             "uuid" : integer,    # UUID of the package to change
-            "newName" : string,  # new name of the package
+            "newName" : string,  # New name of the package
         }
         """
                                                                                                   
-        params = [ int(uuid),str(newName)]
+        params = [ int(uuid),str(newName) ]
         resp = self.device.action(self.url+"/renamePackage", params)
         return resp
 
