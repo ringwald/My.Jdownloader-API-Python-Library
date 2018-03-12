@@ -439,12 +439,18 @@ class Linkgrabber:
         """
         pass
 
-    def rename_package(self):
+    def rename_package(self,uuid, newName):
         """
-        No idea what parameters i have to pass and/or i don't know what it does.
-        If i find out i will implement it :P
+        Rename a package
+        {
+            "uuid" : integer,    # UUID of the package to change
+            "newName" : string,  # new name of the package
+        }
         """
-        pass
+                                                                                                  
+        params = [ int(uuid),str(newName)]
+        resp = self.device.action(self.url+"/renamePackage", params)
+        return resp
 
     def query_packages(self):
         """
