@@ -459,12 +459,29 @@ class Linkgrabber:
         resp = self.device.action(self.url+"/renamePackage", params)
         return resp
 
-    def query_packages(self):
+    def query_packages(self, params=[
+            {
+                "bytesLoaded" : True,
+                "bytesTotal" : True,
+                "comment" : True,
+                "enabled" : True,
+                "eta" : True,
+                "priority" : True,
+                "finished" : True,
+                "running" : True,
+                "speed" : True,
+                "status" : True,
+                "childCount" : True,
+                "hosts" : True,
+                "saveTo" : True,
+                "maxResults" : -1,
+                "startAt" : 0,
+            }]):
         """
-        No idea what parameters i have to pass and/or i don't know what it does.
-        If i find out i will implement it :P
+        Get the packages in the linkgrabber
         """
-        pass
+        resp = self.device.action(self.url+"/queryPackages", params)
+        return resp
 
     def move_packages(self):
         """
