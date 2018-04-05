@@ -625,7 +625,7 @@ class Myjdapi:
 
         """
         self.__request_id = int(time.time()*1000)
-        self.__api_url = "http://api.jdownloader.org"
+        self.__api_url = "https://api.jdownloader.org"
         self.__app_key = "http://git.io/vmcsk"
         self.__api_version = 1
         self.__devices = None
